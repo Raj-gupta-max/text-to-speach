@@ -1,0 +1,65 @@
+<html>
+<head>
+<title>editor in javascript</title>
+<style>
+	textarea{
+		width:100vh;
+		color:blue;
+		font-size:20px;
+		font-family:verdana,geneva;
+		font-weight:500;
+		border:2px dashed green;
+	}
+	button:hover{
+		background-color:white;
+		color:green;
+		font-size:1em;
+		border-radius:10px;
+	}
+</style>
+	
+<script>
+	let fileHandle;
+	const openFile=async ()=>{
+		try{
+		[fileHandle]=await window.showOpenFilePicker();
+		const file=await fileHandle.getFile();
+		const data=await file.text();
+		const dat=await file.html();
+		contents.value=data,dat;
+		}catch(error){
+			console.log(error.name)
+			}
+		}
+	const saveFile=async (content)=>
+	{
+		try{
+			const handle=await window.showSaveFilePicker({
+			types:[{accept:{'text/plain':['.txt'],
+				         'text/html':['.html'],
+			},},],
+			});
+			const writable=await fileHandle.createWritable();
+			await writable.write(content);
+			await writable.close(content);
+		     }catch(error){
+			console.log(error.name)
+		      }
+			  
+	}
+		
+		
+</script>
+
+</head>
+<body>
+	  
+	<center>
+		<textarea rows="30" cols="150" id="contents" name="contents" autofocus placeholder="write some text"></textarea><br>
+		<button onclick="openFile()">Open</button>
+		<button onclick="saveFile(contents.value)">Save</button>
+		<button onclick="contents.value='';">Clear All</button>
+	</center>
+
+</body>
+</html>

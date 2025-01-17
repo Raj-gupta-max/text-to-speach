@@ -1,0 +1,65 @@
+<html>
+<head>
+<title>
+this is pro
+</title>
+	<style>
+		*{
+			padding:0;
+			margin:auto;
+			box-sizing:border-box;
+			background-color:0,0,0;	
+		}
+		table{
+			border:2px solid black;
+			height:300px;
+			width:500px;
+			margin:200px;
+		}
+		td{
+			border:3px solid black;
+			height:200px;
+			width:400px;
+			margin:200px;
+			font-size:250px;
+			text-align:center;
+		}
+		
+		img{
+			width:100%;
+			height:100%;
+		}
+		
+			
+		
+	</style>
+</head>
+<body onkeyup="fun(event)">
+
+	<table>
+		<tr>
+			<td id="inputText"><img src="smil.jpg" alt=""></td>
+			<td><img id="im" src="WA.jpg" src="img2.jpg"></td>
+		</tr>
+	</table>
+	<script>
+ 		function fun(ev){
+		if(65<=ev.keyCode&&ev.keyCode<=90){
+			ary=["apple","boll","cat","dog","elephant","fish","gun","hen","inkpot","jug","kite","Lion","Monkey","Natural","Orange","Parrot","Queen","Rabbit","Sunflower","Tomato","Umberala","Van","Watch","X-masTree","youk","Zebra"];
+			document.getElementById("inputText").innerText=ev.key;
+			document.getElementById("im").src=`${ev.key}.jpg`;
+                                                   const variable=new SpeechSynthesisUtterance(ev.key+" for"+ary.at(ev.which-65));
+		                 speechSynthesis.speak(variable);
+		}else if(17<=ev.keyCode&&ev.keyCode<=64){
+			document.getElementById("inputText").innerText=ev.key;
+			document.getElementById("im").src="WA.jpg";
+			const variable=new SpeechSynthesisUtterance(ev.key+" is wrong input for speech to text");
+		                 speechSynthesis.speak(variable);
+		}
+
+		}
+                              
+	</script>
+
+</body>
+</html>
